@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 import javax.persistence.*;
+import java.util.Collection;
 
 @Component
 @Entity
@@ -12,6 +13,9 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String role;
+
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
 
     public int getId() {
         return id;
@@ -29,6 +33,13 @@ public class Role implements GrantedAuthority {
         this.role = role;
     }
 
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
+    }
 
     @Override
     public String getAuthority() {
