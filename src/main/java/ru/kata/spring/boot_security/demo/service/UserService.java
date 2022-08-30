@@ -13,7 +13,7 @@ public interface UserService {
 
     User findById(int id);
 
-    void update(User updateUser);
+    void update(int id, User updateUser);
 
     void delete(int id);
 }
