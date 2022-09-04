@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Collection;
 
-@Component
+
 @Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {

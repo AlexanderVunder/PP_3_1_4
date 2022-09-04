@@ -14,6 +14,7 @@ public class UserController {
     public final UserService userService;
 
     public UserController(UserService userService) {
+
         this.userService = userService;
     }
 
@@ -22,7 +23,9 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         int userId = user.getId();
         user = userService.findById(userId);
+        model.addAttribute("ROLE_ADMIN", userService.findRoleByName("ROLE_ADMIN"));
         model.addAttribute("user", user);
+        model.addAttribute("roles", userService.getAllRoles());
         return "user";
     }
 }
