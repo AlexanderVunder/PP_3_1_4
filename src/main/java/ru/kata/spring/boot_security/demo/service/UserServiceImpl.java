@@ -7,7 +7,6 @@ import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,17 +34,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<Role> getAllRoles() {
        return roleRepository.findAll();
-    }
-
-    @Override
-    public List <Role> findRoleByName(String roleName) {
-        List<Role> roles = new ArrayList<>();
-        for (Role role: getAllRoles()) {
-            if (roleName.contains(role.getRole())) {
-                roles.add(role);
-            }
-        }
-        return roles;
     }
 
     @Override
@@ -79,4 +67,5 @@ public class UserServiceImpl implements UserService{
     public void delete(int id) {
         userRepository.deleteById(id);
     }
+
 }

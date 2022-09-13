@@ -11,8 +11,6 @@ public interface UserService {
     List<Role> getAllRoles();
     List<User> getAllUsers();
 
-    List<Role> findRoleByName(String roleName);
-
     void save(User user);
 
     User findById(int id);
@@ -20,4 +18,5 @@ public interface UserService {
     void update(int id, User updateUser);
 
     void delete(int id);
+
 }

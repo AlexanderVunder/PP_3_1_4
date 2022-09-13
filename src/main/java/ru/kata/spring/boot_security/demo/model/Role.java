@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 import java.util.Collection;
@@ -12,7 +13,7 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String role;
-
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 
@@ -42,7 +43,7 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return getRole();
+        return role;
     }
 
     @Override
